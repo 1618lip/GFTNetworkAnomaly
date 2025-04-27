@@ -53,27 +53,24 @@ Thus, $\hat{x}_k$ measures the contribution of the $k$-th graph frequency to the
 ### 3. Graph Spectral Energy
 
 The **spectral energy** of the signal is defined as:
-\[
-E_{\text{total}} = \sum_{k=1}^{N} |\hat{x}_k|^2
-\]
+
+$$E_{\text{total}} = \sum_{k=1}^{N} |\hat{x}_k|^2$$
 
 We often break it down:
-- **Low-frequency energy**: sum of \( |\hat{x}_k|^2 \) for small \( \lambda_k \) (smooth, slow variations).
-- **High-frequency energy**: sum for large \( \lambda_k \) (sharp, localized changes — like attacks).
+- **Low-frequency energy**: sum of $|\hat{x}_k|^2$ for small $\lambda_k$ (smooth, slow variations).
+- **High-frequency energy**: sum for large $\lambda_k$ (sharp, localized changes — like attacks).
 
 Thus:
 
-\[
-E_{\text{low}} = \sum_{k \in \text{low}} |\hat{x}_k|^2
+$$E_{\text{low}} = \sum_{k \in \text{low}} |\hat{x}_k|^2
 \quad\quad
-E_{\text{high}} = \sum_{k \in \text{high}} |\hat{x}_k|^2
-\]
+E_{\text{high}} = \sum_{k \in \text{high}} |\hat{x}_k|^2$$
 
 **Energy ratio**:
-\[
-\text{Ratio} = \frac{E_{\text{high}}}{E_{\text{low}} + \varepsilon}
-\]
-where \( \varepsilon \) is a small constant to prevent division by zero.
+
+$$\text{Ratio} = \frac{E_{\text{high}}}{E_{\text{low}} + \varepsilon}$$
+
+where $\varepsilon$ is a small constant to prevent division by zero.
 
 ---
 
@@ -81,10 +78,9 @@ where \( \varepsilon \) is a small constant to prevent division by zero.
 
 #### Normal traffic:
 Modeled as a **Poisson process**:
-\[
-P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
-\]
-where \( \lambda \) is the average arrival rate.
+
+$$P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}$$
+where $\lambda$ is the average arrival rate.
 
 **Motivation**: In normal conditions, packet arrivals are memoryless and well-modeled by Poisson.
 
@@ -92,13 +88,13 @@ where \( \lambda \) is the average arrival rate.
 
 #### Anomalous traffic:
 Simulated as **bursts** modeled by:
-\[
-x(t) = A \sin(2\pi f t + \phi)
-\]
+
+$$x(t) = A \sin(2\pi f t + \phi)$$
+
 where:
-- \( A \) = attack amplitude
-- \( f \) = frequency (small perturbations around 0.2 Hz)
-- \( \phi \) = random phase
+- $A$ = attack amplitude
+- $f$ = frequency (small perturbations around 0.2 Hz)
+- $\phi$ = random phase
 
 Only positive pulses are added (since packet counts can't be negative).
 
@@ -107,7 +103,7 @@ Only positive pulses are added (since packet counts can't be negative).
 ### 5. Anomaly Detection Heuristic
 
 At each timestep:
-- If node's **instantaneous traffic** exceeds a threshold \( T_{\text{attention}} \) (say, 12 packets), that node is **flagged**.
+- If node's **instantaneous traffic** exceeds a threshold $T_{\text{attention}}$ (say, 12 packets), that node is **flagged**.
 - In spectral space, large high-frequency energies can also be used to flag anomalies.
 
 Thus, **two domains** for anomaly detection:
@@ -118,19 +114,19 @@ Thus, **two domains** for anomaly detection:
 
 ## 🧠 More Mathematical Insights
 
-- **Laplacian eigenvalues** \( \lambda_k \) relate to signal smoothness:
-  - Small \( \lambda_k \) → smooth signals
-  - Large \( \lambda_k \) → rapidly changing signals
+- **Laplacian eigenvalues** $lambda_k$ relate to signal smoothness:
+  - Small $\lambda_k$ → smooth signals
+  - Large $\lambda_k$ → rapidly changing signals
 - Anomalies inject **high-variation signals** localized on the graph ⇒ **high-frequency content**.
   
-If you plotted \( \hat{x} \) over \( k \), you'd expect an **energy spike at high frequencies** during attacks.
+If you plotted $\hat{x}$ over $k$, you'd expect an **energy spike at high frequencies** during attacks.
 
 ---
 
 # 📈 Visualization Techniques
 
 - **Color nodes** proportional to traffic intensity.
-- **Highlight nodes** exceeding threshold \( T_{\text{attention}} \) in **red**.
+- **Highlight nodes** exceeding threshold $T_{\text{attention}}$ in **red**.
 - **Animation** over time to see how attacks evolve and spread.
 
 ---
@@ -186,24 +182,3 @@ python highlight_multiple_anomalies.py
 - **Dynamic graphs**: Simulate link failures or topology changes.
 
 ---
-
-# 🧠 Closing Insight
-
-By framing network monitoring as **graph signal processing**, we gain powerful tools to:
-- Understand
-- Visualize
-- Detect
-- Predict
-
-complex network phenomena using **mathematical foundations** rooted in spectral graph theory and Fourier analysis.
-
----
-
----
-
----
-
-Would you also want me to format this into **beautiful LaTeX**, like a conference-paper style document? 📄✨
-
-It would be 🔥 if you're showcasing this in your workshop.  
-**Want me to format it into LaTeX next?** 🎯
