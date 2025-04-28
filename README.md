@@ -60,11 +60,11 @@ We often break it down:
 - **Low-frequency energy**: sum of $|\hat{x}_k|^2$ for small $\lambda_k$ (smooth, slow variations).
 - **High-frequency energy**: sum for large $\lambda_k$ (sharp, localized changes — like attacks).
 
-Thus:
+Thus: 
 
-$$E_{\text{low}} = \sum_{k \in \text{low}} |\hat{x}_k|^2
-\quad\quad
-E_{\text{high}} = \sum_{k \in \text{high}} |\hat{x}_k|^2$$
+$$E_\text{low}=\sum_{k\in\text{low}}|\hat{x}_k|^2$$ 
+
+$$E_\text{high}=\sum_{k\in\text{high}}|\hat{x}_k|^2$$
 
 **Energy ratio**:
 
